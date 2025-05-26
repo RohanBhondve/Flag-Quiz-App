@@ -2,4 +2,13 @@
     <string name="app_name">Flag Quiz</string>
     <string name="welcome_message">Flag Quiz Game</string>
     <string name="start">Start</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="correct_text">Correct:</string>
+    <string name="correct_num">0</string>
+    <string name="incorrect_text">Incorrect:</string>
+    <string name="incorrect_num">0</string>
+    <string name="skipped_text">Skipped:</string>
+    <string name="skipped_num">0</string>
+    <string name="question_num">Question: 1</string>
 </resources>
