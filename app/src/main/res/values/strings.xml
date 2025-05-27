@@ -11,4 +11,12 @@
     <string name="skipped_text">Skipped:</string>
     <string name="skipped_num">0</string>
     <string name="question_num">Question: 1</string>
+    <string name="option1">A)</string>
+    <string name="option2">B)</string>
+    <string name="option3">C)</string>
+    <string name="option4">D)</string>
+    <string name="result">Your Result</string>
+    <string name="again">Play Again</string>
+    <string name="exit">Exit</string>
+
 </resources>

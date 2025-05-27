@@ -29,7 +29,6 @@
         android:backgroundTint="@color/darkWhite"
         android:text="@string/start"
         android:textColor="@color/black"
-        android:textColorLink="@color/lightLavender"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
