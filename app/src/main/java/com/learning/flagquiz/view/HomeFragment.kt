@@ -20,13 +20,6 @@ class HomeFragment : Fragment() {
     ): View {
         fragHomeBinding = FragmentHomeBinding.inflate(inflater,container,false)
 
-        fragHomeBinding.buttonStart.setOnClickListener{
-            val fm: FragmentManager = requireActivity().supportFragmentManager
-            val ft: FragmentTransaction = fm.beginTransaction()
-            val quizFrag = QuizFragment()
-            ft.replace(R.id.mainFrame,quizFrag)
-            ft.commit()
-        }
 
         return fragHomeBinding.root
     }

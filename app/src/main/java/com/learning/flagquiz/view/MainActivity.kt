@@ -25,14 +25,5 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        val fm: FragmentManager = supportFragmentManager
-        val ft: FragmentTransaction = fm.beginTransaction()
-        val fragHome = HomeFragment()
-        ft.add(R.id.mainFrame,fragHome)
-        ft.commit()
-
-
-
     }
 }
