@@ -10,7 +10,7 @@ class FlagsDao {
     fun randomFiveRecords(helper: DatabaseCopyHelper):ArrayList<FlagsModel>{
         val recordList = ArrayList<FlagsModel>()
         val database: SQLiteDatabase = helper.readableDatabase
-        val cursor: Cursor = database.rawQuery("SELECT * FROM flags ORDER BY Random() LIMIT 10",null)
+        val cursor: Cursor = database.rawQuery("SELECT * FROM flags ORDER BY Random() LIMIT 5",null)
 
         val idIndex = cursor.getColumnIndex("flag_id")
         val countryNameIndex = cursor.getColumnIndex("country_name")
