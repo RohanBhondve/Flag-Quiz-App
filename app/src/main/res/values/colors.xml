@@ -5,4 +5,8 @@
     <color name="slateBlue">#6A5FFD</color>
     <color name="purple">#9370db</color>
     <color name="darkWhite">#f7f7f7</color>
+    <color name="optionsbg">#FF6F61</color>
+    <color name="nextbg">#FFD700</color>
+    <color name="correct">#8BC34A</color>
+    <color name="incorrect">#E91E63</color>
 </resources>
