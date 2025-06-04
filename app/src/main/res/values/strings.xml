@@ -10,7 +10,7 @@
     <string name="incorrect_num">0</string>
     <string name="skipped_text">Skipped:</string>
     <string name="skipped_num">0</string>
-    <string name="question_num">Question: 1</string>
+    <string name="question_num">Question:</string>
     <string name="option1">A)</string>
     <string name="option2">B)</string>
     <string name="option3">C)</string>
