@@ -1,20 +1,19 @@
 package com.learning.flagquiz.view
 
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.content.res.ResourcesCompat
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.learning.flagquiz.R
 import com.learning.flagquiz.database.FlagsDao
 import com.learning.flagquiz.databinding.FragmentQuizBinding
 import com.learning.flagquiz.model.FlagsModel
 import com.techmania.flagquizwithsqlitedemo.DatabaseCopyHelper
-import kotlin.math.log
 
 class QuizFragment : Fragment() {
 
@@ -22,10 +21,12 @@ class QuizFragment : Fragment() {
     var flagList = ArrayList<FlagsModel>()
     var wrongFlags = ArrayList<FlagsModel>()
 
-    var incorrect = 0
-    var correct = 0
-    var skipped = 0
+    var incorrectNum = 0
+    var correctNum = 0
+    var skippedNum = 0
     var question = 0
+    var optionClicked = false
+
     lateinit var correctFlag : FlagsModel
     val dao = FlagsDao()
 
@@ -57,13 +58,35 @@ class QuizFragment : Fragment() {
         }
 
         fragQuizBinding.buttonNext.setOnClickListener{
-            if(fragQuizBinding.option4.isClickable == true){
-                skipped++
-                fragQuizBinding.tvSkipped.text = skipped.toString()
-            }
             question++
-            showData()
-            setOptionToDefault()
+            if(question>4){ //when quiz is finished
+                if(!optionClicked){
+                    skippedNum++
+                }
+//                Toast.makeText(requireActivity(),"Quiz Finished",Toast.LENGTH_SHORT).show()
+                val direction = QuizFragmentDirections.actionQuizFragmentToResultFragment().apply {
+                    correct = correctNum
+                    incorrect = incorrectNum
+                    skipped = skippedNum
+                }
+                this.findNavController().navigate(
+                    R.id.action_quizFragment_to_resultFragment,
+                    direction.arguments,
+                    NavOptions.Builder().setPopUpTo(R.id.homeFragment,false).build())
+            }
+
+            else{
+                showData()
+                if(!optionClicked){
+                    skippedNum++
+                    fragQuizBinding.tvSkipped.text = skippedNum.toString()
+                }
+                else{
+                    setOptionToDefault()
+                }
+            }
+            optionClicked = false
+
         }
 
         return fragQuizBinding.root
@@ -105,13 +128,13 @@ class QuizFragment : Fragment() {
         val correctAns = correctFlag.countryName
 
         if(clickedOption == correctAns){
-            correct++
-            fragQuizBinding.tvCorrect.text = correct.toString()
+            correctNum++
+            fragQuizBinding.tvCorrect.text = correctNum.toString()
             button.setBackgroundColor(resources.getColor(R.color.correct,requireActivity().theme))
         }
         else{
-            incorrect++
-            fragQuizBinding.tvIncorrect.text = incorrect.toString()
+            incorrectNum++
+            fragQuizBinding.tvIncorrect.text = incorrectNum.toString()
             button.setBackgroundColor(resources.getColor(R.color.incorrect,requireActivity().theme))
 
             when(correctAns){
@@ -128,6 +151,7 @@ class QuizFragment : Fragment() {
         fragQuizBinding.option2.isClickable = false
         fragQuizBinding.option3.isClickable = false
         fragQuizBinding.option4.isClickable = false
+        optionClicked = true
     }
 
     private fun setOptionToDefault(){
