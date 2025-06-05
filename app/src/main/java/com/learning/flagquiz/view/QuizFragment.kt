@@ -64,15 +64,28 @@ class QuizFragment : Fragment() {
                     skippedNum++
                 }
 //                Toast.makeText(requireActivity(),"Quiz Finished",Toast.LENGTH_SHORT).show()
-                val direction = QuizFragmentDirections.actionQuizFragmentToResultFragment().apply {
-                    correct = correctNum
-                    incorrect = incorrectNum
-                    skipped = skippedNum
+//                val direction = QuizFragmentDirections.actionQuizFragmentToResultFragment().apply {
+//                    correct = correctNum
+//                    incorrect = incorrectNum
+//                    skipped = skippedNum
+//                }
+//                this.findNavController().navigate(
+//                    R.id.action_quizFragment_to_resultFragment,
+//                    direction.arguments,
+//                    NavOptions.Builder().setPopUpTo(R.id.homeFragment,false).build())
+
+                val bundle = Bundle().apply {
+                    putInt("correct",correctNum)
+                    putInt("incorrect",incorrectNum)
+                    putInt("skipped",skippedNum)
                 }
+
+
                 this.findNavController().navigate(
                     R.id.action_quizFragment_to_resultFragment,
-                    direction.arguments,
+                    bundle,
                     NavOptions.Builder().setPopUpTo(R.id.homeFragment,false).build())
+
             }
 
             else{
