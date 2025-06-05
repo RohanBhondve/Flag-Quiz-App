@@ -57,6 +57,10 @@ class QuizFragment : Fragment() {
         }
 
         fragQuizBinding.buttonNext.setOnClickListener{
+            if(fragQuizBinding.option4.isClickable == true){
+                skipped++
+                fragQuizBinding.tvSkipped.text = skipped.toString()
+            }
             question++
             showData()
             setOptionToDefault()
@@ -128,19 +132,19 @@ class QuizFragment : Fragment() {
 
     private fun setOptionToDefault(){
         fragQuizBinding.option1.apply {
-            setBackgroundColor(resources.getColor(R.color.optionsbg,requireActivity().theme))
+            setBackgroundColor(resources.getColor(R.color.slateBlue,requireActivity().theme))
             isClickable = true
         }
         fragQuizBinding.option2.apply {
-            setBackgroundColor(resources.getColor(R.color.optionsbg,requireActivity().theme))
+            setBackgroundColor(resources.getColor(R.color.slateBlue,requireActivity().theme))
             isClickable = true
         }
         fragQuizBinding.option3.apply {
-            setBackgroundColor(resources.getColor(R.color.optionsbg,requireActivity().theme))
+            setBackgroundColor(resources.getColor(R.color.slateBlue,requireActivity().theme))
             isClickable = true
         }
         fragQuizBinding.option4.apply {
-            setBackgroundColor(resources.getColor(R.color.optionsbg,requireActivity().theme))
+            setBackgroundColor(resources.getColor(R.color.slateBlue,requireActivity().theme))
             isClickable = true
         }
     }
