@@ -59,7 +59,7 @@ class QuizFragment : Fragment() {
 
         fragQuizBinding.buttonNext.setOnClickListener{
             question++
-            if(question>4){ //when quiz is finished
+            if(question>9){ //when quiz is finished
                 if(!optionClicked){
                     skippedNum++
                 }
