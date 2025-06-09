@@ -17,7 +17,7 @@ class DatabaseCopyHelper(context: Context) : SQLiteOpenHelper(context,DB_NAME,nu
     lateinit var myDataBase : SQLiteDatabase
 
     companion object{
-        var DB_NAME : String = "countries.db"
+        var DB_NAME : String = "flags.db"
     }
 
     init {
